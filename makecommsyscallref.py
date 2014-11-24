@@ -17,7 +17,7 @@ FILENAME = AskFile(0, '*.*', 'open symbol file')
 d2 = json.load(open(FILENAME))
 
 for f in Functions():
-    func = get_func(f)
+    func = idaapi.get_func(f)
     for head in Heads(func.startEA,func.endEA):
         if GetMnem(head) == "call":
             if(GetOpnd(head,0).startswith('near ptr')):
